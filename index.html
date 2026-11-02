@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storr Carbon | High-Integrity Carbon Intelligence & MRV</title>
+  <meta name="description" content="Next-generation satellite lidar, foundation model embeddings, and Verra-aligned carbon accounting for nature-based and industrial carbon removal." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            storr: {
+              950: '#04120C',
+              900: '#071F15',
+              800: '#0D3323',
+              600: '#16794F',
+              500: '#10B981',
+              400: '#34D399',
+              300: '#6EE7B7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #04120C;
+      color: #F3F4F6;
+    }
+    .grid-bg {
+      background-image: radial-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .glass {
+      background: rgba(13, 51, 35, 0.35);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(52, 211, 153, 0.18);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-storr-500 selection:text-storr-950">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 glass border-b border-emerald-500/15">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center font-display font-bold text-storr-950 text-xl shadow-lg shadow-emerald-500/20">
+          S
+        </div>
+        <span class="font-display font-bold text-xl tracking-tight text-white">STORR <span class="text-emerald-400 font-normal">CARBON</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#platform" class="hover:text-emerald-400 transition">Platform</a>
+        <a href="#methodology" class="hover:text-emerald-400 transition">dMRV Methodology</a>
+        <a href="#calculator" class="hover:text-emerald-400 transition">Carbon Forecast</a>
+        <a href="#projects" class="hover:text-emerald-400 transition">Global Assets</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-sm transition shadow-lg shadow-emerald-500/20">
+          Request Access
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden grid-bg">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-60 -left-40 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass text-xs font-medium text-emerald-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            10m Wall-to-Wall Satellite LiDAR & Multi-Temporal dMRV
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+            Audit-Grade Carbon Intelligence at <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-200">Planetary Scale.</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
+            Storr Carbon combines spaceborne GEDI LiDAR, Sentinel-1/2 temporal radar-optical fusion, and field-calibrated allometry to originate, verify, and forecast high-integrity carbon removal assets.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#calculator" class="px-7 py-4 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-base transition shadow-xl shadow-emerald-500/25">
+              Explore Growth Simulator
+            </a>
+            <a href="#methodology" class="px-7 py-4 rounded-full glass hover:border-emerald-400/50 text-white font-medium text-base transition">
+              View VM0047 / VT0007 Pipeline →
+            </a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+            <div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-white">10m</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Spatial Resolution (TESSERA + S1/S2)</div>
+            </div>
+            <div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">±6.4%</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Stock Uncertainty vs Field Plots</div>
+            </div>
+            <div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-white">100%</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Verra VM0047 & CSRD Aligned</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Telemetry Card -->
+        <div class="lg:col-span-5">
+          <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Live Asset Telemetry</span>
+                <h3 class="font-display text-lg font-semibold text-white mt-0.5"> Corridor #04 — Afforestation ARR</h3>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-mono">VERIFIED</span>
+            </div>
+
+            <!-- Simulated Canopy / Biomass Visual -->
+            <div class="my-6 space-y-4">
+              <div class="flex justify-between text-xs text-gray-400 font-mono">
+                <span>CANOPY HEIGHT (RH98)</span>
+                <span class="text-emerald-300">24.8 m (+1.9m YoY)</span>
+              </div>
+              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-300 h-full rounded-full" style="width: 78%"></div>
+              </div>
+
+              <div class="flex justify-between text-xs text-gray-400 font-mono pt-2">
+                <span>ABOVEGROUND BIOMASS (AGBD)</span>
+                <span class="text-emerald-300">186.4 Mg/ha</span>
+              </div>
+              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-full" style="width: 84%"></div>
+              </div>
+
+              <div class="flex justify-between text-xs text-gray-400 font-mono pt-2">
+                <span>DYNAMIC BASELINE ADDITIONALLY INDEX</span>
+                <span class="text-emerald-300">0.94 (High Integrity)</span>
+              </div>
+              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-500 to-lime-300 h-full rounded-full" style="width: 94%"></div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-sm">
+              <div class="bg-storr-950/60 p-3.5 rounded-xl border border-white/5">
+                <div class="text-gray-400 text-xs">Net Sequestration</div>
+                <div class="font-display text-xl font-bold text-white mt-1">14,820 <span class="text-xs font-normal text-emerald-400">tCO₂e/yr</span></div>
+              </div>
+              <div class="bg-storr-950/60 p-3.5 rounded-xl border border-white/5">
+                <div class="text-gray-400 text-xs">Buffer Pool Deduction</div>
+                <div class="font-display text-xl font-bold text-white mt-1">12.0% <span class="text-xs font-normal text-gray-400">Risk-Adjusted</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Pillars -->
+  <section id="platform" class="py-24 border-t border-white/10 bg-storr-900/40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">Core Infrastructure</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Built for Institutional Buyers & Project Developers</h2>
+        <p class="text-gray-400 mt-4 text-lg">Replacing fragmented manual audits with continuous, physics-informed remote sensing and transparent financial underwriting.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-14">
+        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">01</div>
+          <h3 class="font-display text-xl font-semibold text-white">Multi-Sensor Fusion</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mt-3">
+            Harmonizes NASA GEDI L2A/L4A LiDAR footprints, Sentinel-1 SAR backscatter, Sentinel-2 surface reflectance, and 10m foundation model embeddings across every 30m fishnet cell.
+          </p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">02</div>
+          <h3 class="font-display text-xl font-semibold text-white">Dynamic Control Matching</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mt-3">
+            Automated synthetic control selection and counterfactual baseline tracking aligned with Verra VM0047 and VT0007 to prove real additionality and permanence.
+          </p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">03</div>
+          <h3 class="font-display text-xl font-semibold text-white">Stacked Financial Growth Curves</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mt-3">
+            Convert canopy height and guild-specific biomass trajectories into bankable 30-year issuance schedules with Monte Carlo uncertainty bounds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Carbon Growth & Revenue Estimator -->
+  <section id="calculator" class="py-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">Interactive Prototype Tool</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Carbon Yield & Issuance Simulator</h2>
+          <p class="text-gray-400 text-base leading-relaxed">
+            Test Storr Carbon's allometric growth and financial forecasting engine. Adjust project area, intervention biome, and credit pricing to model 20-year net removable carbon and revenue.
+          </p>
+
+          <div class="space-y-5 pt-2">
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <label class="text-gray-300 font-medium">Project Area (Hectares)</label>
+                <span id="areaVal" class="text-emerald-400 font-mono font-semibold">2,500 ha</span>
+              </div>
+              <input id="areaInput" type="range" min="250" max="25000" step="250" value="2500" class="w-full accent-emerald-400 cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <label class="text-gray-300 font-medium">Intervention Guild</label>
+              </div>
+              <select id="biomeInput" class="w-full bg-storr-900 border border-emerald-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-400">
+                <option value="14.2">Tropical / Subtropical Moist Restoration (14.2 tCO₂e/ha/yr)</option>
+                <option value="9.8" selected>Temperate Mixed Hardwood ARR (9.8 tCO₂e/ha/yr)</option>
+                <option value="7.4">Agroforestry & Silvopasture Corridor (7.4 tCO₂e/ha/yr)</option>
+                <option value="18.5">Mangrove & Blue Carbon Restoration (18.5 tCO₂e/ha/yr)</option>
+              </select>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <label class="text-gray-300 font-medium">Target Credit Price ($/tCO₂e)</label>
+                <span id="priceVal" class="text-emerald-400 font-mono font-semibold">$32 / tCO₂e</span>
+              </div>
+              <input id="priceInput" type="range" min="12" max="90" step="2" value="32" class="w-full accent-emerald-400 cursor-pointer" />
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="glass rounded-2xl p-8 space-y-8">
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
+                <div class="text-xs text-gray-400 uppercase font-mono">Annual Net Issuance</div>
+                <div id="annualCredits" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">20,825</div>
+                <div class="text-xs text-emerald-400 mt-1">tCO₂e / yr (post-15% buffer)</div>
+              </div>
+              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
+                <div class="text-xs text-gray-400 uppercase font-mono">20-Yr Cumulative Removal</div>
+                <div id="totalCredits" class="font-display text-2xl sm:text-3xl font-bold text-emerald-400 mt-2">416,500</div>
+                <div class="text-xs text-gray-400 mt-1">Verified VCUs projected</div>
+              </div>
+              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
+                <div class="text-xs text-gray-400 uppercase font-mono">20-Yr Gross Value</div>
+                <div id="totalRevenue" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">$13.3M</div>
+                <div class="text-xs text-emerald-400 mt-1">Undiscounted off-take value</div>
+              </div>
+            </div>
+
+            <!-- Bar Trajectory Preview -->
+            <div>
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs font-mono uppercase text-gray-400">Projected 20-Year Canopy Biomass Accumulation Curve (Logistic S-Curve)</span>
+                <span class="text-xs font-mono text-emerald-400">CI 95% ±6.4%</span>
+              </div>
+              <div id="barsContainer" class="h-44 flex items-end gap-2 pt-6 pb-2 px-4 bg-storr-950/70 rounded-xl border border-white/5">
+                <!-- Populated by JS -->
+              </div>
+              <div class="flex justify-between text-[11px] font-mono text-gray-500 mt-2 px-1">
+                <span>Yr 1</span>
+                <span>Yr 5</span>
+                <span>Yr 10</span>
+                <span>Yr 15</span>
+                <span>Yr 20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology / Pipeline -->
+  <section id="methodology" class="py-24 border-t border-white/10 bg-storr-900/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">End-to-End Verification</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">From Raw Orbital Photons to Issued Registry Credits</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 mt-14">
+        <div class="glass p-6 rounded-xl">
+          <div class="text-xs font-mono text-emerald-400">STEP 01</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Ingest & Co-Register</h4>
+          <p class="text-gray-400 text-sm mt-2">Automated ingestion of HLS optical, Sentinel-1 C-band radar, ALOS PALSAR, and GEDI L2A/L4A shots.</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <div class="text-xs font-mono text-emerald-400">STEP 02</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">10m TESSERA Embeddings</h4>
+          <p class="text-gray-400 text-sm mt-2">Foundation model feature extraction predicts contiguous canopy height (RH98) and habitat guild classification.</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <div class="text-xs font-mono text-emerald-400">STEP 03</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Field-Plot Calibration</h4>
+          <p class="text-gray-400 text-sm mt-2">Stratified ground-truth plots calibrate species-specific allometric carbon equations with bias correction.</p>
+        </div>
+        <div class="glass p-6 rounded-xl">
+          <div class="text-xs font-mono text-emerald-400">STEP 04</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Registry Issuance Package</h4>
+          <p class="text-gray-400 text-sm mt-2">Automated GeoPackage export, uncertainty propagation ledger, and VVB audit trail ready for Verra / Gold Standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="contact" class="py-24 border-t border-white/10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="glass rounded-3xl p-8 sm:p-12 text-center space-y-6">
+        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono uppercase">Partner With Storr Carbon</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Ready to evaluate a carbon asset or integrate dMRV?</h2>
+        <p class="text-gray-300 max-w-xl mx-auto">
+          Submit your project boundary (GeoJSON / KML) or schedule a technical walkthrough with our carbon science team.
+        </p>
+
+        <form onsubmit="event.preventDefault(); document.getElementById('formSuccess').classList.remove('hidden');" class="max-w-xl mx-auto grid sm:grid-cols-3 gap-3 pt-4">
+          <input type="email" required placeholder="work@organization.com" class="sm:col-span-2 px-5 py-3.5 rounded-full bg-storr-950 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-400" />
+          <button type="submit" class="px-6 py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-sm transition">
+            Book Demo
+          </button>
+        </form>
+        <p id="formSuccess" class="hidden text-emerald-400 text-sm font-medium pt-2">
+          ✓ Request logged! Our team will reach out shortly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-white/10 text-center text-xs text-gray-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>© 2026 Storr Carbon (storrcarbon.com). All rights reserved.</div>
+      <div class="flex gap-6">
+        <a href="#platform" class="hover:text-gray-300">Platform</a>
+        <a href="#methodology" class="hover:text-gray-300">Methodology</a>
+        <a href="#calculator" class="hover:text-gray-300">Simulator</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const areaInput = document.getElementById('areaInput');
+    const biomeInput = document.getElementById('biomeInput');
+    const priceInput = document.getElementById('priceInput');
+    const areaVal = document.getElementById('areaVal');
+    const priceVal = document.getElementById('priceVal');
+    const annualCredits = document.getElementById('annualCredits');
+    const totalCredits = document.getElementById('totalCredits');
+    const totalRevenue = document.getElementById('totalRevenue');
+    const barsContainer = document.getElementById('barsContainer');
+
+    function updateSimulator() {
+      const area = parseFloat(areaInput.value);
+      const rate = parseFloat(biomeInput.value);
+      const price = parseFloat(priceInput.value);
+
+      areaVal.textContent = area.toLocaleString() + ' ha';
+      priceVal.textContent = '$' + price + ' / tCO₂e';
+
+      const netAnnual = Math.round(area * rate * 0.85); // 15% buffer
+      const cum20 = netAnnual * 20;
+      const rev20 = (cum20 * price) / 1e6;
+
+      annualCredits.textContent = netAnnual.toLocaleString();
+      totalCredits.textContent = cum20.toLocaleString();
+      totalRevenue.textContent = '$' + rev20.toFixed(1) + 'M';
+
+      // Render 20 bars following logistic growth curve
+      barsContainer.innerHTML = '';
+      for (let t = 1; t <= 20; t++) {
+        const logistic = 1 / (1 + Math.exp(-0.35 * (t - 8)));
+        const heightPct = Math.max(12, Math.min(100, Math.round(logistic * 100)));
+        const bar = document.createElement('div');
+        bar.className = 'flex-1 bg-gradient-to-t from-emerald-600/80 to-emerald-300 rounded-t transition-all duration-300 hover:opacity-90';
+        bar.style.height = heightPct + '%';
+        bar.title = `Year ${t}: ${(logistic * rate * area * 0.85).toFixed(0)} tCO₂e`;
+        barsContainer.appendChild(bar);
+      }
+    }
+
+    areaInput.addEventListener('input', updateSimulator);
+    biomeInput.addEventListener('change', updateSimulator);
+    priceInput.addEventListener('input', updateSimulator);
+    updateSimulator();
+  </script>
+</body>
+</html>
