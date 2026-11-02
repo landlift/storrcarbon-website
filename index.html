@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Storr Carbon | High-Integrity Carbon Intelligence & MRV</title>
-  <meta name="description" content="Next-generation satellite lidar, foundation model embeddings, and Verra-aligned carbon accounting for nature-based and industrial carbon removal." />
+  <title>Storr Carbon | Maryland Residual Wood to Puro.earth Biochar CORCs</title>
+  <meta name="description" content="Transforming Maryland commercial residual wood and storm-driven road clearance biomass into durable biochar and verified Puro.earth CO2 Removal Certificates (CORCs)." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -16,16 +17,17 @@
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
             display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            storr: {
-              950: '#04120C',
-              900: '#071F15',
-              800: '#0D3323',
-              600: '#16794F',
-              500: '#10B981',
-              400: '#34D399',
-              300: '#6EE7B7',
+            char: {
+              950: '#0B0D0E',
+              900: '#121618',
+              800: '#1C2226',
+              700: '#2A3338',
+            },
+            amber: {
+              450: '#F59E0B',
             }
           }
         }
@@ -34,137 +36,155 @@
   </script>
   <style>
     body {
-      background-color: #04120C;
+      background-color: #0B0D0E;
       color: #F3F4F6;
     }
     .grid-bg {
-      background-image: radial-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(245, 158, 11, 0.10) 1px, transparent 1px);
       background-size: 28px 28px;
     }
     .glass {
-      background: rgba(13, 51, 35, 0.35);
+      background: rgba(28, 34, 38, 0.65);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(52, 211, 153, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .glass-amber {
+      background: rgba(28, 34, 38, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(245, 158, 11, 0.28);
     }
   </style>
 </head>
-<body class="antialiased selection:bg-storr-500 selection:text-storr-950">
+<body class="antialiased selection:bg-amber-500 selection:text-char-950">
 
   <!-- Navbar -->
-  <header class="fixed top-0 inset-x-0 z-50 glass border-b border-emerald-500/15">
+  <header class="fixed top-0 inset-x-0 z-50 glass border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center font-display font-bold text-storr-950 text-xl shadow-lg shadow-emerald-500/20">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-400 via-orange-500 to-emerald-600 flex items-center justify-center font-display font-bold text-char-950 text-xl shadow-lg shadow-amber-500/20">
           S
         </div>
-        <span class="font-display font-bold text-xl tracking-tight text-white">STORR <span class="text-emerald-400 font-normal">CARBON</span></span>
+        <div>
+          <span class="font-display font-bold text-xl tracking-tight text-white">STORR <span class="text-amber-400 font-normal">CARBON</span></span>
+          <span class="hidden sm:inline-block ml-2 text-[11px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-gray-400 border border-white/10">Maryland Biochar CDR</span>
+        </div>
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-        <a href="#platform" class="hover:text-emerald-400 transition">Platform</a>
-        <a href="#methodology" class="hover:text-emerald-400 transition">dMRV Methodology</a>
-        <a href="#calculator" class="hover:text-emerald-400 transition">Carbon Forecast</a>
-        <a href="#projects" class="hover:text-emerald-400 transition">Global Assets</a>
+        <a href="#feedstock" class="hover:text-amber-400 transition">MD Commercial Feedstock</a>
+        <a href="#wind-model" class="hover:text-amber-400 transition">Wind & Road-Fall Analytics</a>
+        <a href="#corc-calculator" class="hover:text-amber-400 transition">Biochar & Puro CORCs</a>
+        <a href="#process" class="hover:text-amber-400 transition">Verification Chain</a>
       </nav>
       <div class="flex items-center gap-4">
-        <a href="#contact" class="px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-sm transition shadow-lg shadow-emerald-500/20">
-          Request Access
+        <a href="#contact" class="px-5 py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-char-950 font-semibold text-sm transition shadow-lg shadow-amber-500/20">
+          Partner / Offtake
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden grid-bg">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-60 -left-40 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden grid-bg">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-60 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-8">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass text-xs font-medium text-emerald-300">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            10m Wall-to-Wall Satellite LiDAR & Multi-Temporal dMRV
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-amber text-xs font-mono text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            MARYLAND RESIDUAL BIOMASS → PURO.EARTH BIOCHAR CORCs
           </div>
 
           <h1 class="font-display text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.08]">
-            Audit-Grade Carbon Intelligence at <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-200">Planetary Scale.</span>
+            Turning Maryland’s Storm & Commercial Wood Waste into <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-emerald-400">Permanent Carbon Removal.</span>
           </h1>
 
           <p class="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
-            Storr Carbon combines spaceborne GEDI LiDAR, Sentinel-1/2 temporal radar-optical fusion, and field-calibrated allometry to originate, verify, and forecast high-integrity carbon removal assets.
+            Storr Carbon aggregates unmerchantable residual wood from Maryland’s commercial arboriculture, utility right-of-way, and storm-driven road clearances—measuring every ton and pyrolyzing it into high-stability biochar certified under the <strong class="text-white font-medium">Puro.earth Standard (CORCs)</strong>.
           </p>
 
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="#calculator" class="px-7 py-4 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-base transition shadow-xl shadow-emerald-500/25">
-              Explore Growth Simulator
+            <a href="#wind-model" class="px-7 py-4 rounded-full bg-amber-400 hover:bg-amber-300 text-char-950 font-semibold text-base transition shadow-xl shadow-amber-500/20">
+              View Wind-Throw & Road-Fall Curve
             </a>
-            <a href="#methodology" class="px-7 py-4 rounded-full glass hover:border-emerald-400/50 text-white font-medium text-base transition">
-              View VM0047 / VT0007 Pipeline →
+            <a href="#corc-calculator" class="px-7 py-4 rounded-full glass hover:border-amber-400/50 text-white font-medium text-base transition">
+              Calculate Puro.earth CORCs →
             </a>
           </div>
 
           <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
             <div>
-              <div class="font-display text-2xl sm:text-3xl font-bold text-white">10m</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1">Spatial Resolution (TESSERA + S1/S2)</div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-white">MD-24</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">County Commercial & DOT Corridor Coverage</div>
             </div>
             <div>
-              <div class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">±6.4%</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1">Stock Uncertainty vs Field Plots</div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-amber-400">H/C<sub>org</sub> &lt; 0.4</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">1,000-Year Biochar Permanence Class</div>
             </div>
             <div>
-              <div class="font-display text-2xl sm:text-3xl font-bold text-white">100%</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1">Verra VM0047 & CSRD Aligned</div>
+              <div class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">~2.6x</div>
+              <div class="text-xs sm:text-sm text-gray-400 mt-1">Net CORCs per Dry Ton of Biochar</div>
             </div>
           </div>
         </div>
 
-        <!-- Live Telemetry Card -->
+        <!-- Live Maryland Feedstock Ledger Card -->
         <div class="lg:col-span-5">
-          <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+          <div class="glass-amber rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between pb-5 border-b border-white/10">
               <div>
-                <span class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Live Asset Telemetry</span>
-                <h3 class="font-display text-lg font-semibold text-white mt-0.5"> Corridor #04 — Afforestation ARR</h3>
+                <span class="text-xs uppercase tracking-wider text-amber-400 font-mono font-semibold">Maryland Regional Intake</span>
+                <h3 class="font-display text-lg font-semibold text-white mt-0.5">Residual Biomass & Pyrolysis Batch #MD-108</h3>
               </div>
-              <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-mono">VERIFIED</span>
+              <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-mono border border-emerald-500/30">PURO AUDIT READY</span>
             </div>
 
-            <!-- Simulated Canopy / Biomass Visual -->
             <div class="my-6 space-y-4">
-              <div class="flex justify-between text-xs text-gray-400 font-mono">
-                <span>CANOPY HEIGHT (RH98)</span>
-                <span class="text-emerald-300">24.8 m (+1.9m YoY)</span>
-              </div>
-              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
-                <div class="bg-gradient-to-r from-emerald-600 to-emerald-300 h-full rounded-full" style="width: 78%"></div>
-              </div>
-
-              <div class="flex justify-between text-xs text-gray-400 font-mono pt-2">
-                <span>ABOVEGROUND BIOMASS (AGBD)</span>
-                <span class="text-emerald-300">186.4 Mg/ha</span>
-              </div>
-              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
-                <div class="bg-gradient-to-r from-teal-500 to-emerald-400 h-full rounded-full" style="width: 84%"></div>
+              <div class="p-3.5 rounded-xl bg-char-950/70 border border-white/5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-gray-400 font-mono">01. COMMERCIAL TREE CARE & MILL RESIDUALS</div>
+                  <div class="text-sm font-medium text-white mt-0.5">Baltimore–Washington Metro Corridor</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-mono text-base font-bold text-amber-400">640 t</div>
+                  <div class="text-[11px] text-gray-500">Green / wk</div>
+                </div>
               </div>
 
-              <div class="flex justify-between text-xs text-gray-400 font-mono pt-2">
-                <span>DYNAMIC BASELINE ADDITIONALLY INDEX</span>
-                <span class="text-emerald-300">0.94 (High Integrity)</span>
+              <div class="p-3.5 rounded-xl bg-char-950/70 border border-white/5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-gray-400 font-mono">02. STORM & ROADWAY CLEARANCE (MDOT SHA / UTILITIES)</div>
+                  <div class="text-sm font-medium text-white mt-0.5">Gust-Triggered Emergency Windfall Wood</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-mono text-base font-bold text-orange-400">410 t</div>
+                  <div class="text-[11px] text-gray-500">Surge / event</div>
+                </div>
               </div>
-              <div class="w-full h-2.5 bg-storr-950 rounded-full overflow-hidden">
-                <div class="bg-gradient-to-r from-emerald-500 to-lime-300 h-full rounded-full" style="width: 94%"></div>
+
+              <div class="p-3.5 rounded-xl bg-char-950/70 border border-white/5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-gray-400 font-mono">03. PYROLYSIS CONVERSION (650°C KILN)</div>
+                  <div class="text-sm font-medium text-white mt-0.5">82.4% Fixed Carbon • 22% Moisture Adjusted</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-mono text-base font-bold text-emerald-400">245 t</div>
+                  <div class="text-[11px] text-gray-500">Dry Biochar</div>
+                </div>
               </div>
             </div>
 
             <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-sm">
-              <div class="bg-storr-950/60 p-3.5 rounded-xl border border-white/5">
-                <div class="text-gray-400 text-xs">Net Sequestration</div>
-                <div class="font-display text-xl font-bold text-white mt-1">14,820 <span class="text-xs font-normal text-emerald-400">tCO₂e/yr</span></div>
+              <div class="bg-char-950/80 p-3.5 rounded-xl border border-white/5">
+                <div class="text-gray-400 text-xs font-mono">VERIFIED ISSUANCE</div>
+                <div class="font-display text-2xl font-bold text-emerald-400 mt-1">637 <span class="text-xs font-normal text-gray-300">CORCs</span></div>
+                <div class="text-[11px] text-gray-500 mt-0.5">1 CORC = 1 tCO₂e removed</div>
               </div>
-              <div class="bg-storr-950/60 p-3.5 rounded-xl border border-white/5">
-                <div class="text-gray-400 text-xs">Buffer Pool Deduction</div>
-                <div class="font-display text-xl font-bold text-white mt-1">12.0% <span class="text-xs font-normal text-gray-400">Risk-Adjusted</span></div>
+              <div class="bg-char-950/80 p-3.5 rounded-xl border border-white/5">
+                <div class="text-gray-400 text-xs font-mono">AVOIDED DECAY / BURN</div>
+                <div class="font-display text-2xl font-bold text-white mt-1">100% <span class="text-xs font-normal text-amber-400">Diverted</span></div>
+                <div class="text-[11px] text-gray-500 mt-0.5">Zero landfill methane</div>
               </div>
             </div>
           </div>
@@ -173,120 +193,255 @@
     </div>
   </section>
 
-  <!-- Platform Pillars -->
-  <section id="platform" class="py-24 border-t border-white/10 bg-storr-900/40">
+  <!-- Wind Speed vs. Fallen Trees on Maryland Roads Graph Section -->
+  <section id="wind-model" class="py-24 border-t border-white/10 bg-char-900/60">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">Core Infrastructure</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Built for Institutional Buyers & Project Developers</h2>
-        <p class="text-gray-400 mt-4 text-lg">Replacing fragmented manual audits with continuous, physics-informed remote sensing and transparent financial underwriting.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 mt-14">
-        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">01</div>
-          <h3 class="font-display text-xl font-semibold text-white">Multi-Sensor Fusion</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mt-3">
-            Harmonizes NASA GEDI L2A/L4A LiDAR footprints, Sentinel-1 SAR backscatter, Sentinel-2 surface reflectance, and 10m foundation model embeddings across every 30m fishnet cell.
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase">
+            Predictive Storm Biomass Modeling
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
+            Wind Gust Velocity vs. Roadway Tree-Fall & Recoverable Biomass
+          </h2>
+          <p class="text-gray-300 text-base leading-relaxed">
+            Maryland’s mature oak, tulip poplar, and loblolly pine canopies experience non-linear structural failure once peak wind gusts cross <strong class="text-amber-400">38–45 mph</strong>—especially when paired with saturated Piedmont and Coastal Plain soils.
           </p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Instead of leaving storm-downed roadside trees to open-pile burning or mulching decay (which releases 100% of stored carbon back to the atmosphere within years), Storr Carbon uses gust-threshold telemetry to pre-position haulers with commercial tree crews and municipal road-clearance contractors.
+          </p>
+
+          <!-- Threshold Callouts -->
+          <div class="space-y-3 pt-2">
+            <div class="glass p-4 rounded-xl border-l-4 border-l-emerald-400">
+              <div class="flex justify-between items-center">
+                <span class="font-mono text-xs uppercase text-emerald-400">Baseline Commercial Trim (0–30 mph)</span>
+                <span class="font-mono text-xs text-gray-400">Steady Base Load</span>
+              </div>
+              <p class="text-xs text-gray-300 mt-1">Routine commercial arborist prunings, land-clearing residuals, and pallet/mill offcuts across MD commercial zones.</p>
+            </div>
+
+            <div class="glass p-4 rounded-xl border-l-4 border-l-amber-400">
+              <div class="flex justify-between items-center">
+                <span class="font-mono text-xs uppercase text-amber-400">Critical Inflection Threshold (40–55 mph)</span>
+                <span class="font-mono text-xs text-amber-300">Exponential Branch & Bole Snap</span>
+              </div>
+              <p class="text-xs text-gray-300 mt-1">High-wind advisories trigger widespread secondary road blockages and utility line clearances, multiplying recoverable hardwood tonnage 4×–8×.</p>
+            </div>
+
+            <div class="glass p-4 rounded-xl border-l-4 border-l-red-500">
+              <div class="flex justify-between items-center">
+                <span class="font-mono text-xs uppercase text-red-400">Severe Derecho / Nor'easter Surge (60–75+ mph)</span>
+                <span class="font-mono text-xs text-red-300">Whole-Tree Uprooting</span>
+              </div>
+              <p class="text-xs text-gray-300 mt-1">Root-plate failure on arterial roadways generates massive emergency woody debris stockpiles requiring rapid diversion into pyrolysis yards.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">02</div>
-          <h3 class="font-display text-xl font-semibold text-white">Dynamic Control Matching</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mt-3">
-            Automated synthetic control selection and counterfactual baseline tracking aligned with Verra VM0047 and VT0007 to prove real additionality and permanence.
-          </p>
-        </div>
+        <!-- Interactive Chart Card -->
+        <div class="lg:col-span-7">
+          <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+              <div>
+                <h3 class="font-display text-xl font-bold text-white">Maryland Roadway Tree-Fall & Biomass Surge Curve</h3>
+                <p class="text-xs text-gray-400 mt-1">Modeled relationship between 3-second peak wind gust (mph), roadside tree-fall incidents, and recoverable dry woody biomass (tons/event)</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-xs font-mono text-gray-400">Soil Moisture:</label>
+                <select id="soilCondition" class="bg-char-950 border border-amber-500/40 rounded-lg px-3 py-1.5 text-xs font-mono text-amber-300 focus:outline-none">
+                  <option value="1.0">Normal Soil</option>
+                  <option value="1.45" selected>Saturated / Nor'easter (+45%)</option>
+                  <option value="1.75">Extreme Pre-Soaked (+75%)</option>
+                </select>
+              </div>
+            </div>
 
-        <div class="glass rounded-2xl p-8 hover:border-emerald-400/40 transition">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg mb-6">03</div>
-          <h3 class="font-display text-xl font-semibold text-white">Stacked Financial Growth Curves</h3>
-          <p class="text-gray-400 text-sm leading-relaxed mt-3">
-            Convert canopy height and guild-specific biomass trajectories into bankable 30-year issuance schedules with Monte Carlo uncertainty bounds.
-          </p>
+            <div class="mt-6 h-[360px] w-full">
+              <canvas id="windChart"></canvas>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mt-6 pt-5 border-t border-white/10 text-center">
+              <div>
+                <div class="text-[11px] font-mono text-gray-400 uppercase">Inflection Gust Speed</div>
+                <div class="font-display text-lg font-bold text-amber-400 mt-0.5">42 mph</div>
+              </div>
+              <div>
+                <div class="text-[11px] font-mono text-gray-400 uppercase">55 mph Event Biomass</div>
+                <div id="stat55" class="font-display text-lg font-bold text-white mt-0.5">609 Dry Tons</div>
+              </div>
+              <div>
+                <div class="text-[11px] font-mono text-gray-400 uppercase">55 mph Event CORC Yield</div>
+                <div id="corc55" class="font-display text-lg font-bold text-emerald-400 mt-0.5">475 CORCs</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Carbon Growth & Revenue Estimator -->
-  <section id="calculator" class="py-24 border-t border-white/10">
+  <!-- Maryland Commercial Residual Wood Streams -->
+  <section id="feedstock" class="py-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">Feedstock Origination</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Maryland Commercial Sector Residual Wood Streams</h2>
+        <p class="text-gray-400 mt-3 text-lg">
+          Every batch is weighed on certified scales, moisture-tested, GPS-tagged to its Maryland collection corridor, and screened for Puro.earth sustainable biomass eligibility.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 mt-12">
+        <div class="glass rounded-2xl p-6 hover:border-amber-400/40 transition">
+          <div class="text-xs font-mono text-amber-400">STREAM 01</div>
+          <h3 class="font-display text-lg font-semibold text-white mt-2">Roadway & Utility Line Clearance</h3>
+          <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+            Fallen trees and hazard limbs cleared from MD state highways, county roads, and BGE/Pepco distribution corridors after high-wind events.
+          </p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono text-gray-300">
+            <span>Lignin Content:</span>
+            <span class="text-emerald-400">High (28–32%)</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:border-amber-400/40 transition">
+          <div class="text-xs font-mono text-amber-400">STREAM 02</div>
+          <h3 class="font-display text-lg font-semibold text-white mt-2">Commercial Arboriculture</h3>
+          <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+            Unmerchantable logs, roundwood, and coarse wood chips from commercial tree care operators across Montgomery, Howard, Anne Arundel, and Baltimore counties.
+          </p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono text-gray-300">
+            <span>Ash Content:</span>
+            <span class="text-emerald-400">&lt; 2.5%</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:border-amber-400/40 transition">
+          <div class="text-xs font-mono text-amber-400">STREAM 03</div>
+          <h3 class="font-display text-lg font-semibold text-white mt-2">Secondary Wood & Mill Residuals</h3>
+          <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+            Untreated kiln-dried offcuts, clean commercial pallet wood, and sawmill slab wood with zero paint, creosote, or CCA preservatives.
+          </p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono text-gray-300">
+            <span>Moisture:</span>
+            <span class="text-emerald-400">12–18% (Ready)</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 hover:border-amber-400/40 transition">
+          <div class="text-xs font-mono text-amber-400">STREAM 04</div>
+          <h3 class="font-display text-lg font-semibold text-white mt-2">Commercial Site Maintenance</h3>
+          <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+            Invasive removal and storm-damaged buffer trees from corporate campuses, industrial parks, and municipal watershed management zones.
+          </p>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between text-xs font-mono text-gray-300">
+            <span>Chain of Custody:</span>
+            <span class="text-emerald-400">GPS Weigh-Ticket</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Biomass-to-Biochar & Puro.earth CORC Calculator -->
+  <section id="corc-calculator" class="py-24 border-t border-white/10 bg-char-900/50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 space-y-6">
-          <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">Interactive Prototype Tool</span>
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Carbon Yield & Issuance Simulator</h2>
-          <p class="text-gray-400 text-base leading-relaxed">
-            Test Storr Carbon's allometric growth and financial forecasting engine. Adjust project area, intervention biome, and credit pricing to model 20-year net removable carbon and revenue.
+          <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">Puro.earth Biochar Methodology</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Biomass Measurement & CORC Conversion Engine</h2>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Under the <strong class="text-white">Puro.earth Biochar Methodology</strong>, net CO₂ Removal Certificates (CORCs) are quantified from dry biomass weight, pyrolysis yield, organic carbon content (<span class="font-mono text-amber-300">C<sub>org</sub></span>), molar <span class="font-mono text-amber-300">H/C<sub>org</sub></span> permanence factor, minus supply-chain & pyrolysis emissions.
           </p>
 
           <div class="space-y-5 pt-2">
             <div>
               <div class="flex justify-between text-sm mb-2">
-                <label class="text-gray-300 font-medium">Project Area (Hectares)</label>
-                <span id="areaVal" class="text-emerald-400 font-mono font-semibold">2,500 ha</span>
+                <label class="text-gray-300 font-medium">Delivered Green Residual Wood (Tons / yr)</label>
+                <span id="greenTonsVal" class="text-amber-400 font-mono font-semibold">12,000 t</span>
               </div>
-              <input id="areaInput" type="range" min="250" max="25000" step="250" value="2500" class="w-full accent-emerald-400 cursor-pointer" />
+              <input id="greenTonsInput" type="range" min="1000" max="50000" step="500" value="12000" class="w-full accent-amber-400 cursor-pointer" />
             </div>
 
             <div>
               <div class="flex justify-between text-sm mb-2">
-                <label class="text-gray-300 font-medium">Intervention Guild</label>
+                <label class="text-gray-300 font-medium">Average Incoming Moisture Content (%)</label>
+                <span id="moistureVal" class="text-amber-400 font-mono font-semibold">35%</span>
               </div>
-              <select id="biomeInput" class="w-full bg-storr-900 border border-emerald-500/30 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-400">
-                <option value="14.2">Tropical / Subtropical Moist Restoration (14.2 tCO₂e/ha/yr)</option>
-                <option value="9.8" selected>Temperate Mixed Hardwood ARR (9.8 tCO₂e/ha/yr)</option>
-                <option value="7.4">Agroforestry & Silvopasture Corridor (7.4 tCO₂e/ha/yr)</option>
-                <option value="18.5">Mangrove & Blue Carbon Restoration (18.5 tCO₂e/ha/yr)</option>
+              <input id="moistureInput" type="range" min="15" max="50" step="1" value="35" class="w-full accent-amber-400 cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <label class="text-gray-300 font-medium">Feedstock Dominant Hardwood Mix</label>
+              </div>
+              <select id="speciesSelect" class="w-full bg-char-950 border border-white/15 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-amber-400">
+                <option value="0.84" selected>Maryland Mixed Oak / Hickory Roadway & Arborist (84% C_org in char)</option>
+                <option value="0.80">Tulip Poplar / Red Maple Storm Surge Mix (80% C_org in char)</option>
+                <option value="0.86">Kiln-Dried Commercial Hardwood & Pallet Residuals (86% C_org in char)</option>
               </select>
             </div>
 
             <div>
               <div class="flex justify-between text-sm mb-2">
-                <label class="text-gray-300 font-medium">Target Credit Price ($/tCO₂e)</label>
-                <span id="priceVal" class="text-emerald-400 font-mono font-semibold">$32 / tCO₂e</span>
+                <label class="text-gray-300 font-medium">Puro.earth CORC Market Price ($ / CORC)</label>
+                <span id="corcPriceVal" class="text-emerald-400 font-mono font-semibold">$145 / CORC</span>
               </div>
-              <input id="priceInput" type="range" min="12" max="90" step="2" value="32" class="w-full accent-emerald-400 cursor-pointer" />
+              <input id="corcPriceInput" type="range" min="90" max="250" step="5" value="145" class="w-full accent-emerald-400 cursor-pointer" />
             </div>
           </div>
         </div>
 
+        <!-- Calculator Output Card -->
         <div class="lg:col-span-7">
-          <div class="glass rounded-2xl p-8 space-y-8">
-            <div class="grid sm:grid-cols-3 gap-6">
-              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
-                <div class="text-xs text-gray-400 uppercase font-mono">Annual Net Issuance</div>
-                <div id="annualCredits" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">20,825</div>
-                <div class="text-xs text-emerald-400 mt-1">tCO₂e / yr (post-15% buffer)</div>
+          <div class="glass-amber rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <span class="font-mono text-xs uppercase text-amber-400">Mass Balance & Carbon Accounting Ledger</span>
+              <span class="font-mono text-xs text-emerald-400">Permanence Factor F_p = 0.89 (100+ yr)</span>
+            </div>
+
+            <!-- 4 Mass Balance Boxes -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="bg-char-950/90 p-4 rounded-xl border border-white/10">
+                <div class="text-[11px] font-mono text-gray-400 uppercase">1. Dry Wood Mass</div>
+                <div id="dryTonsOut" class="font-display text-2xl font-bold text-white mt-1">7,800 t</div>
+                <div class="text-[11px] text-gray-500 mt-0.5">0% moisture basis</div>
               </div>
-              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
-                <div class="text-xs text-gray-400 uppercase font-mono">20-Yr Cumulative Removal</div>
-                <div id="totalCredits" class="font-display text-2xl sm:text-3xl font-bold text-emerald-400 mt-2">416,500</div>
-                <div class="text-xs text-gray-400 mt-1">Verified VCUs projected</div>
+
+              <div class="bg-char-950/90 p-4 rounded-xl border border-white/10">
+                <div class="text-[11px] font-mono text-gray-400 uppercase">2. Biochar Produced</div>
+                <div id="biocharTonsOut" class="font-display text-2xl font-bold text-amber-400 mt-1">2,340 t</div>
+                <div class="text-[11px] text-gray-500 mt-0.5">30% dry pyrolysis yield</div>
               </div>
-              <div class="bg-storr-950/80 p-5 rounded-xl border border-white/10">
-                <div class="text-xs text-gray-400 uppercase font-mono">20-Yr Gross Value</div>
-                <div id="totalRevenue" class="font-display text-2xl sm:text-3xl font-bold text-white mt-2">$13.3M</div>
-                <div class="text-xs text-emerald-400 mt-1">Undiscounted off-take value</div>
+
+              <div class="bg-char-950/90 p-4 rounded-xl border border-emerald-500/30">
+                <div class="text-[11px] font-mono text-emerald-400 uppercase">3. Net Puro CORCs</div>
+                <div id="netCorcsOut" class="font-display text-2xl font-bold text-emerald-400 mt-1">5,890</div>
+                <div class="text-[11px] text-gray-400 mt-0.5">tCO₂e/yr net issued</div>
+              </div>
+
+              <div class="bg-char-950/90 p-4 rounded-xl border border-white/10">
+                <div class="text-[11px] font-mono text-gray-400 uppercase">4. Annual Revenue</div>
+                <div id="totalRevOut" class="font-display text-2xl font-bold text-white mt-1">$1.05M</div>
+                <div class="text-[11px] text-amber-400 mt-0.5">CORCs + Biochar Sales</div>
               </div>
             </div>
 
-            <!-- Bar Trajectory Preview -->
-            <div>
-              <div class="flex justify-between items-center mb-3">
-                <span class="text-xs font-mono uppercase text-gray-400">Projected 20-Year Canopy Biomass Accumulation Curve (Logistic S-Curve)</span>
-                <span class="text-xs font-mono text-emerald-400">CI 95% ±6.4%</span>
+            <!-- Equation Breakdown -->
+            <div class="bg-char-950/80 rounded-xl p-5 border border-white/10 space-y-3 font-mono text-xs">
+              <div class="text-gray-400 uppercase text-[11px]">Puro.earth CORC Formula Breakdown:</div>
+              <div class="flex justify-between text-gray-300">
+                <span>Gross Stored CO₂ (M_biochar × C_org × F_p × 44/12):</span>
+                <span id="grossCo2Out" class="text-white font-semibold">6,419 tCO₂e</span>
               </div>
-              <div id="barsContainer" class="h-44 flex items-end gap-2 pt-6 pb-2 px-4 bg-storr-950/70 rounded-xl border border-white/5">
-                <!-- Populated by JS -->
+              <div class="flex justify-between text-gray-400">
+                <span>Less Chipping, Maryland Haulage & Pyrolysis Emissions (E_proc):</span>
+                <span id="emissionsOut" class="text-red-400">-529 tCO₂e</span>
               </div>
-              <div class="flex justify-between text-[11px] font-mono text-gray-500 mt-2 px-1">
-                <span>Yr 1</span>
-                <span>Yr 5</span>
-                <span>Yr 10</span>
-                <span>Yr 15</span>
-                <span>Yr 20</span>
+              <div class="border-t border-white/10 pt-2 flex justify-between text-sm">
+                <span class="text-emerald-400 font-semibold">Net Verified CORCs Issued + Physical Biochar Value ($85/t):</span>
+                <span id="summaryLineOut" class="text-emerald-400 font-bold">5,890 CORCs + $198.9k char</span>
               </div>
             </div>
           </div>
@@ -295,34 +450,34 @@
     </div>
   </section>
 
-  <!-- Methodology / Pipeline -->
-  <section id="methodology" class="py-24 border-t border-white/10 bg-storr-900/30">
+  <!-- 4-Step Verification Chain -->
+  <section id="process" class="py-20 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-3xl mx-auto">
-        <span class="text-emerald-400 font-mono text-xs uppercase tracking-widest">End-to-End Verification</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">From Raw Orbital Photons to Issued Registry Credits</h2>
+        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">Digital MRV Chain of Custody</span>
+        <h2 class="font-display text-3xl font-bold text-white mt-2">From Roadside Clearance to Registry Issuance</h2>
       </div>
 
-      <div class="grid md:grid-cols-4 gap-6 mt-14">
+      <div class="grid md:grid-cols-4 gap-6 mt-12">
         <div class="glass p-6 rounded-xl">
-          <div class="text-xs font-mono text-emerald-400">STEP 01</div>
-          <h4 class="font-display text-lg font-semibold text-white mt-2">Ingest & Co-Register</h4>
-          <p class="text-gray-400 text-sm mt-2">Automated ingestion of HLS optical, Sentinel-1 C-band radar, ALOS PALSAR, and GEDI L2A/L4A shots.</p>
+          <div class="text-xs font-mono text-amber-400">STEP 01 • ORIGINATION</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Storm & Commercial Intake</h4>
+          <p class="text-gray-400 text-sm mt-2">Truckload weighbridge tickets, species logging, moisture probe readings, and GPS origin manifests across Maryland.</p>
         </div>
         <div class="glass p-6 rounded-xl">
-          <div class="text-xs font-mono text-emerald-400">STEP 02</div>
-          <h4 class="font-display text-lg font-semibold text-white mt-2">10m TESSERA Embeddings</h4>
-          <p class="text-gray-400 text-sm mt-2">Foundation model feature extraction predicts contiguous canopy height (RH98) and habitat guild classification.</p>
+          <div class="text-xs font-mono text-amber-400">STEP 02 • CONVERSION</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Continuous Pyrolysis</h4>
+          <p class="text-gray-400 text-sm mt-2">Automated kiln telemetry (600–700°C) with syngas heat recovery and zero-fossil startup after ignition.</p>
         </div>
         <div class="glass p-6 rounded-xl">
-          <div class="text-xs font-mono text-emerald-400">STEP 03</div>
-          <h4 class="font-display text-lg font-semibold text-white mt-2">Field-Plot Calibration</h4>
-          <p class="text-gray-400 text-sm mt-2">Stratified ground-truth plots calibrate species-specific allometric carbon equations with bias correction.</p>
+          <div class="text-xs font-mono text-amber-400">STEP 03 • LAB ASSAY</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">IBI / EBC Batch Testing</h4>
+          <p class="text-gray-400 text-sm mt-2">Independent lab verification of organic carbon (C_org), H/C_org ratio (&lt;0.4), surface area, and heavy-metal safety.</p>
         </div>
         <div class="glass p-6 rounded-xl">
-          <div class="text-xs font-mono text-emerald-400">STEP 04</div>
-          <h4 class="font-display text-lg font-semibold text-white mt-2">Registry Issuance Package</h4>
-          <p class="text-gray-400 text-sm mt-2">Automated GeoPackage export, uncertainty propagation ledger, and VVB audit trail ready for Verra / Gold Standard.</p>
+          <div class="text-xs font-mono text-emerald-400">STEP 04 • ISSUANCE</div>
+          <h4 class="font-display text-lg font-semibold text-white mt-2">Soil / Concrete Matrix & CORCs</h4>
+          <p class="text-gray-400 text-sm mt-2">Biochar is applied to agricultural soils, stormwater media, or low-carbon concrete; Puro.earth issues serialized CORCs.</p>
         </div>
       </div>
     </div>
@@ -331,21 +486,21 @@
   <!-- CTA / Contact -->
   <section id="contact" class="py-24 border-t border-white/10">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="glass rounded-3xl p-8 sm:p-12 text-center space-y-6">
-        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono uppercase">Partner With Storr Carbon</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Ready to evaluate a carbon asset or integrate dMRV?</h2>
-        <p class="text-gray-300 max-w-xl mx-auto">
-          Submit your project boundary (GeoJSON / KML) or schedule a technical walkthrough with our carbon science team.
+      <div class="glass-amber rounded-3xl p-8 sm:p-12 text-center space-y-6">
+        <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-mono uppercase">Maryland Feedstock Suppliers & Carbon Buyers</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Supply Residual Wood or Offtake Puro.earth CORCs</h2>
+        <p class="text-gray-300 max-w-xl mx-auto text-sm sm:text-base">
+          Whether you are a Maryland commercial tree care contractor, municipal road-clearance operator looking to eliminate tipping fees, or a corporate buyer seeking high-durability Biochar CORCs—get in touch.
         </p>
 
         <form onsubmit="event.preventDefault(); document.getElementById('formSuccess').classList.remove('hidden');" class="max-w-xl mx-auto grid sm:grid-cols-3 gap-3 pt-4">
-          <input type="email" required placeholder="work@organization.com" class="sm:col-span-2 px-5 py-3.5 rounded-full bg-storr-950 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-400" />
-          <button type="submit" class="px-6 py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-storr-950 font-semibold text-sm transition">
-            Book Demo
+          <input type="email" required placeholder="you@company.com" class="sm:col-span-2 px-5 py-3.5 rounded-full bg-char-950 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-400" />
+          <button type="submit" class="px-6 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-char-950 font-semibold text-sm transition">
+            Connect With Us
           </button>
         </form>
         <p id="formSuccess" class="hidden text-emerald-400 text-sm font-medium pt-2">
-          ✓ Request logged! Our team will reach out shortly.
+          ✓ Received! We'll reach out shortly regarding Maryland feedstock intake / CORC offtake.
         </p>
       </div>
     </div>
@@ -353,59 +508,198 @@
 
   <footer class="py-10 border-t border-white/10 text-center text-xs text-gray-500">
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div>© 2026 Storr Carbon (storrcarbon.com). All rights reserved.</div>
+      <div>© 2026 Storr Carbon (storrcarbon.com) — Maryland Residual Biomass to Puro.earth Biochar CORCs.</div>
       <div class="flex gap-6">
-        <a href="#platform" class="hover:text-gray-300">Platform</a>
-        <a href="#methodology" class="hover:text-gray-300">Methodology</a>
-        <a href="#calculator" class="hover:text-gray-300">Simulator</a>
+        <a href="#wind-model" class="hover:text-gray-300">Wind-Throw Model</a>
+        <a href="#feedstock" class="hover:text-gray-300">MD Feedstock</a>
+        <a href="#corc-calculator" class="hover:text-gray-300">CORC Calculator</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const areaInput = document.getElementById('areaInput');
-    const biomeInput = document.getElementById('biomeInput');
-    const priceInput = document.getElementById('priceInput');
-    const areaVal = document.getElementById('areaVal');
-    const priceVal = document.getElementById('priceVal');
-    const annualCredits = document.getElementById('annualCredits');
-    const totalCredits = document.getElementById('totalCredits');
-    const totalRevenue = document.getElementById('totalRevenue');
-    const barsContainer = document.getElementById('barsContainer');
+    // 1. Wind Speed vs. Roadway Tree-Fall & Recoverable Biomass Chart
+    const windSpeeds = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75];
+    // Baseline road-fall incidents per storm across MD corridor
+    const baseTreeFalls = [2, 4, 7, 14, 28, 68, 155, 310, 540, 890, 1380, 1950, 2600];
+    // Recoverable dry woody biomass (tons) = commercial base + storm road-clearance surge
+    const baseBiomassTons = [45, 52, 60, 78, 110, 175, 290, 480, 760, 1180, 1750, 2420, 3180];
 
-    function updateSimulator() {
-      const area = parseFloat(areaInput.value);
-      const rate = parseFloat(biomeInput.value);
-      const price = parseFloat(priceInput.value);
-
-      areaVal.textContent = area.toLocaleString() + ' ha';
-      priceVal.textContent = '$' + price + ' / tCO₂e';
-
-      const netAnnual = Math.round(area * rate * 0.85); // 15% buffer
-      const cum20 = netAnnual * 20;
-      const rev20 = (cum20 * price) / 1e6;
-
-      annualCredits.textContent = netAnnual.toLocaleString();
-      totalCredits.textContent = cum20.toLocaleString();
-      totalRevenue.textContent = '$' + rev20.toFixed(1) + 'M';
-
-      // Render 20 bars following logistic growth curve
-      barsContainer.innerHTML = '';
-      for (let t = 1; t <= 20; t++) {
-        const logistic = 1 / (1 + Math.exp(-0.35 * (t - 8)));
-        const heightPct = Math.max(12, Math.min(100, Math.round(logistic * 100)));
-        const bar = document.createElement('div');
-        bar.className = 'flex-1 bg-gradient-to-t from-emerald-600/80 to-emerald-300 rounded-t transition-all duration-300 hover:opacity-90';
-        bar.style.height = heightPct + '%';
-        bar.title = `Year ${t}: ${(logistic * rate * area * 0.85).toFixed(0)} tCO₂e`;
-        barsContainer.appendChild(bar);
+    const ctx = document.getElementById('windChart').getContext('2d');
+    const windChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: windSpeeds.map(v => v + ' mph'),
+        datasets: [
+          {
+            label: 'Roadside Fallen Trees (Incidents / Event)',
+            data: baseTreeFalls.map(v => Math.round(v * 1.45)),
+            borderColor: '#F59E0B',
+            backgroundColor: 'rgba(245, 158, 11, 0.15)',
+            borderWidth: 3,
+            tension: 0.38,
+            fill: true,
+            yAxisID: 'y',
+            pointRadius: 4,
+            pointBackgroundColor: '#F59E0B'
+          },
+          {
+            label: 'Recoverable Residual Biomass (Dry Tons)',
+            data: baseBiomassTons.map(v => Math.round(v * 1.45)),
+            borderColor: '#10B981',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            borderDash: [6, 4],
+            borderWidth: 2.5,
+            tension: 0.38,
+            fill: false,
+            yAxisID: 'y1',
+            pointRadius: 4,
+            pointBackgroundColor: '#10B981'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#D1D5DB',
+              font: { family: 'Inter', size: 12 }
+            }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(11, 13, 14, 0.95)',
+            titleColor: '#F59E0B',
+            bodyColor: '#F3F4F6',
+            borderColor: 'rgba(245, 158, 11, 0.3)',
+            borderWidth: 1,
+            callbacks: {
+              afterBody: function(context) {
+                const dryTons = context[1].raw;
+                const estCorcs = Math.round(dryTons * 0.30 * 0.84 * 0.89 * (44/12) * 0.92);
+                return `\n→ Est. Puro.earth Yield: ~${estCorcs.toLocaleString()} CORCs`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Peak 3-Second Wind Gust Speed (mph) — Maryland Corridor',
+              color: '#9CA3AF',
+              font: { family: 'JetBrains Mono', size: 11 }
+            },
+            ticks: { color: '#9CA3AF' },
+            grid: { color: 'rgba(255, 255, 255, 0.05)' }
+          },
+          y: {
+            type: 'linear',
+            display: true,
+            position: 'left',
+            title: {
+              display: true,
+              text: 'Fallen Trees on Roads (Incidents)',
+              color: '#F59E0B',
+              font: { family: 'JetBrains Mono', size: 11 }
+            },
+            ticks: { color: '#F59E0B' },
+            grid: { color: 'rgba(255, 255, 255, 0.06)' }
+          },
+          y1: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            title: {
+              display: true,
+              text: 'Recoverable Biomass (Dry Tons)',
+              color: '#10B981',
+              font: { family: 'JetBrains Mono', size: 11 }
+            },
+            ticks: { color: '#10B981' },
+            grid: { drawOnChartArea: false }
+          }
+        }
       }
+    });
+
+    const soilCondition = document.getElementById('soilCondition');
+    const stat55 = document.getElementById('stat55');
+    const corc55 = document.getElementById('corc55');
+
+    function updateWindModel() {
+      const mult = parseFloat(soilCondition.value);
+      windChart.data.datasets[0].data = baseTreeFalls.map(v => Math.round(v * mult));
+      windChart.data.datasets[1].data = baseBiomassTons.map(v => Math.round(v * mult));
+      windChart.update();
+
+      // Index 8 corresponds to 55 mph
+      const dry55 = Math.round(baseBiomassTons[8] * mult);
+      const corcs55 = Math.round(dry55 * 0.30 * 0.84 * 0.89 * (44 / 12) * 0.92);
+      stat55.textContent = dry55.toLocaleString() + ' Dry Tons';
+      corc55.textContent = corcs55.toLocaleString() + ' CORCs';
+    }
+    soilCondition.addEventListener('change', updateWindModel);
+    updateWindModel();
+
+    // 2. Biomass-to-Biochar & Puro.earth CORCs Calculator
+    const greenTonsInput = document.getElementById('greenTonsInput');
+    const moistureInput = document.getElementById('moistureInput');
+    const speciesSelect = document.getElementById('speciesSelect');
+    const corcPriceInput = document.getElementById('corcPriceInput');
+
+    const greenTonsVal = document.getElementById('greenTonsVal');
+    const moistureVal = document.getElementById('moistureVal');
+    const corcPriceVal = document.getElementById('corcPriceVal');
+
+    const dryTonsOut = document.getElementById('dryTonsOut');
+    const biocharTonsOut = document.getElementById('biocharTonsOut');
+    const netCorcsOut = document.getElementById('netCorcsOut');
+    const totalRevOut = document.getElementById('totalRevOut');
+    const grossCo2Out = document.getElementById('grossCo2Out');
+    const emissionsOut = document.getElementById('emissionsOut');
+    const summaryLineOut = document.getElementById('summaryLineOut');
+
+    function updateCorcCalculator() {
+      const greenTons = parseFloat(greenTonsInput.value);
+      const moisture = parseFloat(moistureInput.value) / 100;
+      const cOrg = parseFloat(speciesSelect.value);
+      const corcPrice = parseFloat(corcPriceInput.value);
+
+      greenTonsVal.textContent = greenTons.toLocaleString() + ' t';
+      moistureVal.textContent = Math.round(moisture * 100) + '%';
+      corcPriceVal.textContent = '$' + corcPrice + ' / CORC';
+
+      const dryTons = Math.round(greenTons * (1 - moisture));
+      const biocharTons = Math.round(dryTons * 0.30); // 30% mass yield
+      const permanenceFactor = 0.89; // Puro.earth H/C_org < 0.4 factor
+      const grossCo2 = Math.round(biocharTons * cOrg * permanenceFactor * (44 / 12));
+      const procEmissions = Math.round(grossCo2 * 0.082); // ~8.2% transport + chipping + kiln parasitic load
+      const netCorcs = grossCo2 - procEmissions;
+
+      const biocharPhysicalRev = biocharTons * 85; // $85/t bulk soil/stormwater amendment value
+      const corcRev = netCorcs * corcPrice;
+      const totalRevM = (corcRev + biocharPhysicalRev) / 1e6;
+
+      dryTonsOut.textContent = dryTons.toLocaleString() + ' t';
+      biocharTonsOut.textContent = biocharTons.toLocaleString() + ' t';
+      netCorcsOut.textContent = netCorcs.toLocaleString();
+      totalRevOut.textContent = '$' + totalRevM.toFixed(2) + 'M';
+      grossCo2Out.textContent = grossCo2.toLocaleString() + ' tCO₂e';
+      emissionsOut.textContent = '-' + procEmissions.toLocaleString() + ' tCO₂e';
+      summaryLineOut.textContent = `${netCorcs.toLocaleString()} CORCs + $${(biocharPhysicalRev / 1000).toFixed(1)}k char`;
     }
 
-    areaInput.addEventListener('input', updateSimulator);
-    biomeInput.addEventListener('change', updateSimulator);
-    priceInput.addEventListener('input', updateSimulator);
-    updateSimulator();
+    greenTonsInput.addEventListener('input', updateCorcCalculator);
+    moistureInput.addEventListener('input', updateCorcCalculator);
+    speciesSelect.addEventListener('change', updateCorcCalculator);
+    corcPriceInput.addEventListener('input', updateCorcCalculator);
+    updateCorcCalculator();
   </script>
 </body>
 </html>
